@@ -41,7 +41,7 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
                 voluptatem laudantium placeat sed, voluptas obcaecati!
               </p>
-              <Button type="primary" onClick={handleClick}>
+              <Button type="primary" onClick={handleJoin}>
                 Join Room
               </Button>
             </div>
