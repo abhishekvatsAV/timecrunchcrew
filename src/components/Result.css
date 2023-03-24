@@ -1,0 +1,26 @@
+.result{
+    width: 100%;
+}
+.result_container{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.result_container_table{
+    height: 60vh;
+    width: 50%;
+    position: absolute;
+    top: 20%;
+}
+.result_container_table tr{
+    margin: 0 auto;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+@media screen and (max-width:900px){
+    .result_container_table{
+        width: 100%;
+    }
+}

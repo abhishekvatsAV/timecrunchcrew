@@ -1,17 +1,29 @@
 import { Parallax } from "react-parallax";
 import Library from "../assets/library.jpg";
 import Library2 from "../assets/library2.jpg";
-import { Button } from "antd";
+import { Button, Modal, Input } from "antd";
+import { useState } from "react";
 
 import "./Home.css";
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleCreate = () => {
-    // handle create Room
+    setIsModalOpen(true);
   };
 
   const handleJoin = () => {
-    // handle room joining
+    setIsModalOpen(true);
+  };
+  const handleOk1 = () => {
+    setIsModalOpen(false);
+  };
+  const handleOk2 = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -28,6 +40,16 @@ const Home = () => {
               <Button type="primary" onClick={handleCreate}>
                 Create Room
               </Button>
+              {isModalOpen && (
+                <Modal
+                  open={isModalOpen}
+                  onOk={handleOk1}
+                  onCancel={handleCancel}
+                >
+                  <p>Username : </p>
+                  <Input />
+                </Modal>
+              )}
             </div>
           </div>
         </div>
@@ -44,6 +66,16 @@ const Home = () => {
               <Button type="primary" onClick={handleJoin}>
                 Join Room
               </Button>
+              {isModalOpen && (
+                <Modal
+                  open={isModalOpen}
+                  onOk={handleOk2}
+                  onCancel={handleCancel}
+                >
+                  <p>Username : </p>
+                  <Input />
+                </Modal>
+              )}
             </div>
           </div>
         </div>

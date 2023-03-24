@@ -1,0 +1,25 @@
+.quiz{
+    width: 100%;
+}
+.quiz_container{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 8rem;
+    padding: 3rem;
+    margin-bottom: 8rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+}
+.quiz_container_problemdiv{
+    margin: 3rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.quiz_container_problemdiv:hover{
+    box-shadow: --var(--box-shadow-2);
+}
+.quiz_container_problemdiv p{
+    cursor:pointer;
+    margin: 0.6rem 0;
+}
