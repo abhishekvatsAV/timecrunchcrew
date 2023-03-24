@@ -1,17 +1,33 @@
 import { Parallax } from "react-parallax";
 import Library from "../assets/library.jpg";
 import Library2 from "../assets/library2.jpg";
-import { Button } from "antd";
+import { Button, Modal, Form, Input } from "antd";
 
 import "./Home.css";
+import { useState } from "react";
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // useState
   const handleCreate = () => {
     // handle create Room
   };
 
   const handleJoin = () => {
     // handle room joining
+  };
+
+  // MODAL
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = async () => {
+    
+    setIsModalOpen(false);
+
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -25,9 +41,30 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
                 voluptatem laudantium placeat sed, voluptas obcaecati!
               </p>
-              <Button type="primary" onClick={handleCreate}>
+              <Button onClick={showModal} type="primary">
                 Create Room
               </Button>
+              <Modal
+                title="Create New Room"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              >
+                <Form>
+                  <Form.Item
+                    label="Username"
+                    name="username"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                </Form>
+              </Modal>
             </div>
           </div>
         </div>
