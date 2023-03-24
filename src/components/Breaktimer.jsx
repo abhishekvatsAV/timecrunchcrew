@@ -3,10 +3,10 @@ import "./Clock.css";
 const Clock = () => (
   <CountdownCircleTimer
     isPlaying
-    duration={60}
+    duration={5}
     size = {500}
-    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-    colorsTime={[7, 5, 2, 0]}
+    colors={"green"}
+    // colorsTime={[5, 2, 1, 0]}
     // children={size:100}
 
   >
