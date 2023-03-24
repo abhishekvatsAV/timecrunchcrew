@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Space, Modal } from "antd";
 // import {
 //     PlusCircleOutlined
@@ -37,7 +38,7 @@ const CustomiseRoom = () => {
     <FormContainer>
       <div className="form">
         <h1>Form</h1>
-        <Form
+        {/* <Form
           name="basic"
           labelCol={{
             span: 4,
@@ -89,8 +90,73 @@ const CustomiseRoom = () => {
           >
             <Form>
               <Form.Item
-                label="Username"
-                name="username"
+                label="que"
+                name="que"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Option 1"
+                name="o1"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Option 2"
+                name="o2"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Option 3"
+                name="o3"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Option 4"
+                name="o4"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Answer"
+                name="ans"
                 rules={[
                   {
                     required: true,
@@ -108,24 +174,12 @@ const CustomiseRoom = () => {
                 }}
               >
                 <Button type="primary" htmlType="submit">
-                  Create Room
+                  Set test
                 </Button>
               </Form.Item>
             </Form>
           </Modal>
 
-          {/* <Form.Item
-            label="Username"
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: "Please input your username!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item> */}
           <Form.Item
             wrapperCol={{
               span: 16,
@@ -144,6 +198,111 @@ const CustomiseRoom = () => {
               Create Room
             </Button>
           </Form.Item>
+        </Form> */}
+        <Form
+          name="dynamic_form_nest_item"
+          onFinish={onFinish}
+          style={{ maxWidth: 600 }}
+          autoComplete="off"
+        >
+          <Form.List name="subjects">
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Space
+                    key={key}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginBottom: 8,
+                    }}
+                    align="baseline"
+                  >
+                    <Form.Item
+                      {...restField}
+                      name={[name, "subject"]}
+                      rules={[
+                        { required: true, message: "Missing first name" },
+                      ]}
+                    >
+                      <Input placeholder="Subject" />
+                    </Form.Item>
+
+                    <div style={{width:"100%"}} className="div">
+                      <Form.Item
+                        {...restField}
+                        name={[name, "question"]}
+                        rules={[
+                          { required: true, message: "Missing Question" },
+                        ]}
+                      >
+                        <Input placeholder="Question" />
+                      </Form.Item>
+
+                      <div style={{width:"100%", display:"flex",justifyContent:"space-evenly", gap:"10px"}}>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "option1"]}
+                          rules={[
+                            { required: true, message: "Missing Option 1" },
+                          ]}
+                        >
+                          <Input placeholder="Option 1" />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "option2"]}
+                          rules={[
+                            { required: true, message: "Missing Option 2" },
+                          ]}
+                        >
+                          <Input placeholder="Option 2" />
+                        </Form.Item>
+                      </div>
+
+
+                      <div style={{width:"100%", display:"flex",justifyContent:"space-evenly", gap:"10px"}}>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "option3"]}
+                          rules={[
+                            { required: true, message: "Missing Option 3" },
+                          ]}
+                        >
+                          <Input placeholder="Option 3" />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "option4"]}
+                          rules={[
+                            { required: true, message: "Missing Option 4" },
+                          ]}
+                        >
+                          <Input placeholder="Option 4" />
+                        </Form.Item>
+                      </div>
+                    </div>
+                    <MinusCircleOutlined onClick={() => remove(name)} />
+                  </Space>
+                ))}
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusOutlined />}
+                  >
+                    Add Subject
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
         </Form>
       </div>
     </FormContainer>
@@ -151,13 +310,15 @@ const CustomiseRoom = () => {
 };
 
 const FormContainer = styled.div`
-  height: 100vh;
+overflow-x: hidden;
+min-height: 100vh;
   width: 100vw;
   background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
   .form {
+    margin:30px;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
